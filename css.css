@@ -1,0 +1,35 @@
+body {
+	margin: 0;
+}
+nav ul {
+	text-align: center;
+	padding: 0;
+	list-style-type: none;
+	margin: 0;
+	overflow: hidden;
+	background-color: #404040;
+}
+nav li {
+	display: inline-block; /* itemi v vrsti */
+	float: center;
+}
+nav a {
+	display: block;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	padding: 15px 30px;
+}
+
+
+nav a:hover:not(.active) {
+	background-color: #999999;
+}
+nav a.active {
+	background-color: #4EB151;
+}
+@media screen and (max-width: 720px) { /* rwd - screen width manjši od 720px (telefon?) -> gre v vertikalne blocke */
+	ul li {float: none; display: block}
+}
