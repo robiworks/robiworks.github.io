@@ -1,6 +1,13 @@
 body {
 	margin: 0;
 }
+
+/* 
+		--------------------------------
+		 Deklaracije za navigation menu
+		--------------------------------
+*/
+
 nav ul {
 	text-align: center;
 	padding: 0;
@@ -13,6 +20,14 @@ nav li {
 	display: inline-block; /* itemi v vrsti */
 	float: center;
 }
+nav li.left {
+	float: left;
+	display: block;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	padding: 15px 30px;
+}
 nav a {
 	display: block;
 	color: white;
@@ -22,8 +37,6 @@ nav a {
 	text-align: center;
 	padding: 15px 30px;
 }
-
-
 nav a:hover:not(.active) {
 	background-color: #999999;
 }
@@ -32,4 +45,23 @@ nav a.active {
 }
 @media screen and (max-width: 720px) { /* rwd - screen width manjši od 720px (telefon?) -> gre v vertikalne blocke */
 	ul li {float: none; display: block}
+	ul li.left {float: none; display: block; background: linear-gradient(#999999, #404040)} /* ime strani gre na vrh + barvni gradient za ozadje */
+}
+
+/*
+		---------------------
+		 Deklaracije za h, p
+		---------------------
+*/
+
+h1, h2, h3 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+}
+h1 {font-size: 28px}
+h2 {font-size: 24px}
+h3 {font-size: 20px}
+p {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
 }
