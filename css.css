@@ -1,5 +1,7 @@
 body {
 	margin: 0;
+	background-color: #f2f2f2;
+	font-size: 16px;
 }
 
 /* 
@@ -7,26 +9,29 @@ body {
 		 Deklaracije za navigation menu
 		--------------------------------
 */
-
+nav {
+	z-index: 1000;
+	position: relative;
+	font-size: 1.25em;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+}
 nav ul {
 	text-align: center;
-	padding: 0;
+	padding: 10px 0px 10px 0px;
 	list-style-type: none;
 	margin: 0;
 	overflow: hidden;
-	background-color: #404040;
+	background-color: #999999;
+	/*position: fixed;*/
+	top: 0;
+	width: 100%;
+	box-shadow: 0px 5px 5px 2px #999999;
 }
 nav li {
 	display: inline-block; /* itemi v vrsti */
-	float: center;
-}
-nav li.left {
-	float: left;
-	display: block;
-	color: white;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bold;
-	padding: 15px 30px;
+	padding: 0px 5px 0px 5px;
 }
 nav a {
 	display: block;
@@ -35,17 +40,21 @@ nav a {
 	font-weight: bold;
 	text-decoration: none;
 	text-align: center;
-	padding: 15px 30px;
+	padding: 10px 30px;
+	background-color: #999999; /* za animacijo na hover eventu */
+	transition: background-color 250ms linear, transform 250ms ease;
 }
-nav a:hover:not(.active) {
-	background-color: #999999;
+nav a:hover {
+	background-color: #B30000;
+	transform: scale(1.05, 1.05);
 }
 nav a.active {
-	background-color: #4EB151;
+	background-color: rgba(179, 0, 0, 0.9);
 }
 @media screen and (max-width: 720px) { /* rwd - screen width manjši od 720px (telefon?) -> gre v vertikalne blocke */
-	ul li {float: none; display: block}
-	ul li.left {float: none; display: block; background: linear-gradient(#999999, #404040)} /* ime strani gre na vrh + barvni gradient za ozadje */
+	body {font-size: 12px}
+	ul {padding: 0;}
+	ul li {float: none; display: block; padding: 5px 0 0 0;}
 }
 
 /*
@@ -58,10 +67,45 @@ h1, h2, h3 {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: bold;
 }
-h1 {font-size: 28px}
-h2 {font-size: 24px}
-h3 {font-size: 20px}
+h1 {font-size: 1.75em}
+h2 {font-size: 1.5em}
+h3 {font-size: 1.25em}
 p {
 	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
+	font-size: 1em;
+}
+
+/*
+		--------------------------
+		 Deklaracije za div.intro
+		--------------------------
+*/
+div.intro {
+	top: 0;
+	position: relative;
+	float: left;
+	font-size: 6em;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+}
+div.intro-txt {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	color: white;
+	
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	transform: translate(-50%, -50%);
+	transition: color 250ms ease, font-size 250ms ease;
+}
+div.intro-txt:hover {
+	color: aqua;
+	font-size: 125%;
+}
+@media screen and (max-width: 720px) { /* rwd - screen width manjši od 720px (telefon?) -> gre v vertikalne blocke */
+	div.intro {font-size: 3em}
 }
