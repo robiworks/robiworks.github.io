@@ -96,7 +96,7 @@ ol.sources li {
 ol.sources li:before {
 	margin-right: 10px;
 	content: counter(item);
-	background: lightblue;
+	background: gray;
 	border-radius: 100%;
 	color: white;
 	width: 1.2em;
@@ -142,19 +142,21 @@ div.intro-txt:hover {
 div.content {
 	margin-left: 5%;
 	margin-right: 5%;
-	padding-bottom: 15%;
+	padding-bottom: 7.5%;
+	clear: both;
 }
 div.indexnav {
 	margin-left: 5%;
 	margin-right: 5%;
-	padding-bottom: 15%;
+	padding-bottom: 7.5%;
 	text-align: center;
+	clear: both;
 }
 
 /*
-		------------------------------------
-		 css za button, footer, img, iframe
-		------------------------------------
+		----------------------------
+		 css za button, img, iframe
+		----------------------------
 */
 .navbutton {
 	font-family: 'Montserrat', sans-serif;
@@ -179,18 +181,9 @@ div.indexnav {
 }
 img.left {
 	float: left;
-	padding: 0px 20px 10px 0px;
+	margin: 0px 20px 10px 0px;
 	height: 300px;
 }
-/* footer {
-	position: relative;
-	bottom: 0;
-	padding: 1% 0;
-	width: 100%;
-	background-color: silver;
-	color: white;
-	text-align: center;
-} */
 .video {
 	position: relative;
 	height: 0;
@@ -202,11 +195,73 @@ img.left {
 .video iframe {
 	position: absolute;
 	top: 0;
-	left: 12.5%;
-	width: 75%;
-	height: 75%;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 @media screen and (max-width: 720px) { /* rwd - screen width manjši od 720px (telefon?) */
 	img.left {height: 150px; padding: 0px 10px 5px 0px}
-	.video iframe {left: 0; width: 100%; height: 100%;}
+}
+
+/*
+		-----------------
+		 css za galerijo
+		-----------------
+*/
+.imgSlides {display: none;}
+div.gallery {
+	max-width: 100%;
+	position: relative;
+	margin: auto;
+}
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	padding: 16px;
+	margin-top: -22px;
+	color: white;
+	font-weight: bold;
+	transition: 500ms ease;
+	border-radius: 0 3px 3px 0;
+}
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+div.imgCapt {
+	color: white;
+	font-family: Roboto, sans-serif;
+	font-size: 1.25em;
+	padding: 8px 12px;
+	position: absolute;
+	bottom: 8px;
+	width: 100%;
+	text-align: center;
+}
+div.imgNum {
+	color: white;
+	font-family: Roboto, sans-serif;
+	font-size: 1em;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
+}
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1s;
+	animation-name: fade;
+	animation-duration: 1s;
+}
+@-webkit-keyframes fade {
+	from {opacity: .4}
+	to {opacity: 1}
+}
+@keyframes fade {
+	from {opacity: .4}
+	to {opacity: 1}
 }
