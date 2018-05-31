@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<title>O projektu – PowerRest</title>
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<li><a href="index.html">domov</a></li>
+				<li><a href="projekt.html" class="active">o projektu</a></li>
+				<li><a href="galerija.html">galerija</a></li>
+				<li><a href="viri.html">viri</a></li>
+			</ul>
+		</nav>
+	<!-- vsebina strani -->
+		<div class="glava">
+			<p class="title">O PROJEKTU</p>
+			<p class="text">
+				Naš projekt temelji na uporabi sončne energije iz vgrajenega sončnega panela v mizi, za polnenje integrirane baterije. S tem izdelkom bi radi omogočili večjo uporabo obnovljive energije v mestih ali pa za lastno uporabo.
+				Izdelek bo v celoti iz lesa, saj želimo, da je proizvod okolju čim bolj prijazen. Naš cilj je, da bo izdelek cenovno konkurenčen ostalim, hkrati pa bo nudil boljšo kvaliteto in večjo zmogljivost.
+				Izdelek imamo namen uporabiti na dvorišču Gimnazije Vič, kjer bodo lahko dijaki med svojim prostim časom polnili telefone in hkrati preživeli ta čas na prostem.
+				Če bo izdelek dobro uspel, bi se ga lahko množično uporabljalo. Širšo uporabo takega izdelka vidimo kot del napredovanja uporabe obnovljivih virov energije, ki je v današnjih časih zelo aktualna.
+			</p>
+			<figure>
+				<img src="img/regler.png">
+				<figcaption>Pololu regulator | vir slike: <a href="viri.html">[1]</a></figcaption>
+			</figure>
+			<p class="text">
+				Za izdelavo prototipa smo najprej kupili 20W solarni panel, Anker PowerCore+ baterijo (26.800 mAh) in Pololu 5V, 2.5A Step-Down Voltage Regulator, ki je zgoraj na sliki.
+				Prvi regulator smo slabo prispajkali žice na VOUT in GND priključek oziroma so bile žice, ki so vodile v USB izhod pretanke (nismo mogli izbirati debeline teh žic, ker smo jih dobili iz preščipnjenega USB kabla), zato sta se žici odtrgali.
+				Nato smo poskusili zvrtati luknjo v regulator in še enkrat prispajkati žice, a smo pri vrtanju uničili regulator.
+			</p>
+			<figure>
+				<img src="img/regler2.png">
+				<figcaption>Jevois Inc regulator | vir slike: <a href="viri.html">[2]</a></figcaption>
+			</figure>
+			<p class="text">
+				Zatem smo naročili drug regulator, in sicer: JeVois Step-Down 6-24V to USB 5V/3A DC-DC buck converter, ki je na zgornji sliki. S tem regulatorjem smo naredili delujoč prototip.
+				20W panel je polnil baterijo z premajhnim tokom, težava pa je tudi v Ankerjevem smartcharge vezju, ki ne dovoli hitrejšega polnjenja, zato smo sedaj naročili nov powerbank in panel na katerega še čakamo.
+			</p>
+			<p class="title">O SONČNIH CELICAH</p>
+			<p class="text">
+				<b>Sončne celice</b> so sestavljene iz materialov, ki dobro absorbirajo sončno svetlobo. Na izbiro materialov vpliva tudi prostor, kjer se bodo te sončne celice nahajale (v vesolju, na zemlji).
+				Po navadi so sončne celice sestavljene iz enega ali več slojev. Za večslojne je značilno, da imajo različne absorpcijske in ločevalne mehanizme. Po zgradbi se delijo na celice prve, druge in tretje generacije.
+			</p>
+			<figure>
+				<img src="img/celice.png">
+				<figcaption>primerjava med mono- in polikristalnimi celicami | vir slike: <a href="viri.html">[3]</a></figcaption>
+			</figure>
+			<p class="text">
+				<b>Monokristalne sončne celice</b> so ene izmed najpogosteje uporabljenih vrst sončnih celic. Sestavljene so iz majhnih monokristalov čistega silicija.
+				Te kristale se pridobiva z razbijanjem večjih kristalov silicija, ki jih pridobivajo z Czochralskim procesom. Monokristalne celice so zelo učinkovite (16–18 %).
+				Ponavadi  so monokristalne celice majhne in sestavljajo večje panele. Glavna slabost monokristalnih celic je, da pri previsoki temperaturi (več kot 25 °C) izgubijo na učinkovitosti.
+				Zato morajo biti nameščene tako, da zrak okoli njih neprestano kroži. Druga negativna stvar pa se pojavi pri samem pridobivanju monokristalov, saj je za te procese potrebno velike energije.
+				<br><br><b>Sončne celice iz polikristalnega silicija</b> so prav tako kot monokristalne, zelo pogoste. Polikristalni silicij pridobijo  tako, da staljen silicij oblikujejo v tanko plast.
+				Ko se ta ohladi, na površini celice nastane več kristalov nepravilnih oblik (od tod naziv polikristalne). Izdelava teh celic je lažja kot izdelava monokristalnih celic, zato so te cenejše.
+				Glavna razlika med mono- in polikristalnimi celicami pa je, da so polikristalne manj učinkovite (12–14 %) in manj trpežne od monokristalnih.
+			</p>
+			<figure>
+				<img src="img/solar_panels.png">
+				<figcaption>solarni paneli na strehi hiše | vir slike: <a href="viri.html">[4]</a></figcaption>
+			</figure>
+		</div>
+	</body>
+</html>
