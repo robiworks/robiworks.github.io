@@ -18,6 +18,10 @@ h2 {
     text-align: left;
     border-bottom: 2px solid black;
 }
+h2.ok {
+    background: url('checkmark.png') no-repeat right center;
+    background-size: contain;
+}
 h3 {
     font-size: 1em;
     font-weight: 500;
