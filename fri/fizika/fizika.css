@@ -48,6 +48,12 @@ ul.navigation li a {
 ul.navigation li a:hover {
     background-color: rgba(255, 0, 0, 0.8)
 }
+ul.navigation li a.ok {
+    background-color: rgba(0, 127, 0, 0.6);
+}
+ul.navigation li a.ok:hover {
+    background-color: rgba(0, 127, 0, 0.8);
+}
 ul li.khan {
     background: url('khan.png') no-repeat left center;
     background-size: contain;
@@ -66,6 +72,13 @@ ul li.fri {
     background: url('fri.png') no-repeat left center;
     background-size: contain;
     margin: 0.25em 0 0 -1.5em;
+    padding-left: 2em;
+    list-style: none;
+}
+ul li.pdf {
+    background: url('pdf.png') no-repeat left center;
+    background-size: contain;
+    margin: 1em 0 0 -1.5em;
     padding-left: 2em;
     list-style: none;
 }
