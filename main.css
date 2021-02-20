@@ -23,6 +23,10 @@ p.subtitle {
     margin: 0.5em 0;
     letter-spacing: 0.1em;
 }
+hr.splitter {
+    margin: 1em 0em;
+    border-color: gray;
+}
 ul {
     padding: 0;
 }
@@ -75,5 +79,18 @@ a.footerLink:hover {
         display: inline-block;
         padding: 0.25em 0.5em;
         width: fit-content;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #ffffff;
+        color: #000000;
+    }
+    a.button {
+        background-color: rgba(37, 109, 255, 0.8);
+    }
+    a.noDecor {
+        color: #000000;
     }
 }
