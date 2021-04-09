@@ -1,5 +1,8 @@
 function generiraj() {
     let vpisna = document.getElementById('vpisna').value;
+    if (vpisna.includes("420")) {
+        window.open("http://smokeweedeveryday.net/", '_blank').focus();
+    }
     let a = parseInt(vpisna.charAt(4));
     let b = parseInt(vpisna.charAt(5));
     let c = parseInt(vpisna.charAt(6));
