@@ -114,10 +114,15 @@ function calculateResults() {
         document.getElementById('izpit').innerHTML = "YES!!!";
         document.getElementById('izpit').classList.remove("sadge");
         document.getElementById('izpit').classList.add("gladge");
+        let ocena = (Math.ceil(procenti) / 10) > 5 ? parseInt(Math.ceil(procenti) / 10) : 5;
+        document.getElementById('ocena').innerHTML = ocena;
+        document.getElementById('ocena').classList.add(ocena > 5 ? "gladge" : "sadge");
+        document.getElementById('ocena').classList.remove(ocena > 5 ? "sadge" : "gladge");
     } else {
         document.getElementById('izpit').innerHTML = "NO :(";
         document.getElementById('izpit').classList.remove("gladge");
         document.getElementById('izpit').classList.add("sadge");
+        document.getElementById('ocena').innerHTML = "odvisno od izpita lol";
     }
 }
 
