@@ -46,7 +46,7 @@ document.querySelector('#popravki').addEventListener('change', event => {
     let item = document.querySelector('#popravki');
     item.value = parseInt(item.value);
     if (item.value != 0) {
-        popravkiScore = ((0.3 * log10(item.value)) / 5.73).toFixed(2);
+        popravkiScore = ((0.3 * Math.log10(item.value)) / 5.73).toFixed(2);
     } else {
         popravkiScore = 0.00;
     }
