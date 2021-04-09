@@ -50,12 +50,14 @@ document.querySelector('#popravki').addEventListener('change', event => {
     } else {
         popravkiScore = 0.00;
     }
+    calculateResults();
 })
 
 document.querySelector('#forum').addEventListener('change', event => {
     let item = document.querySelector('#forum');
     item.value = parseInt(item.value);
     forumScore = ((0.81 * item.value) / 100).toFixed(2);
+    calculateResults();
 })
 
 function updateKahootScore(kahootList) {
