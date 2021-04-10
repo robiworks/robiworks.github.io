@@ -3,6 +3,10 @@ function generiraj() {
     if (vpisna.includes("420")) {
         window.open("http://smokeweedeveryday.net/", '_blank').focus();
     }
+    if (vpisna.length < 8) {
+        window.alert("Bruh, vpisna mora bit dolga 8 znakov!! Lahko tut več, sam nima efekta lol");
+        return;
+    }
     let a = parseInt(vpisna.charAt(4));
     let b = parseInt(vpisna.charAt(5));
     let c = parseInt(vpisna.charAt(6));
