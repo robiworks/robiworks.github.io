@@ -1,0 +1,103 @@
+/* General definitions */
+html {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+    background-color: #191919;
+    color: #ffffff;
+    margin: 1rem;
+    padding: 0;
+}
+
+/* Navigation section definitions */
+div.navigation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    text-align: center;
+}
+
+div.navigation h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff;
+}
+
+div.navigation h2 {
+    font-family: 'Lato', sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0.5em 0;
+    letter-spacing: 0.1em;
+    color: #e6e6e6;
+}
+
+div.navigation hr {
+    margin: 1em 0;
+    border-color: #8f8f8f;
+}
+
+ul.navigation {
+    padding: 0;
+}
+
+ul.navigation li {
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    width: fit-content;
+}
+
+/* Footer section definitions */
+div.footer {
+    font-family: 'Lato', sans-serif;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5em;
+    text-align: center;
+}
+
+div.footer p {
+    margin: 0;
+    letter-spacing: 0.075em;
+    color: #808080;
+}
+
+div.footer a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s linear;
+}
+
+div.footer a:hover {
+    color: #42aee6;
+}
+
+/* Link definitions */
+a.no-decoration {
+    text-decoration: none;
+    font-weight: 600;
+    color: inherit;
+    transition: color 0.2s linear;
+}
+
+a.no-decoration:hover {
+    color: #42aee6;
+}
+
+a.button {
+    display: block;
+    text-decoration: none;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 0.5em 1em;
+    background-color: rgba(37, 109, 255, 0.7);
+}
+
+a.button:hover {
+    background-color: rgba(37, 109, 255, 1.0);
+}
