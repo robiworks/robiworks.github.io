@@ -62,6 +62,47 @@
 	        ip route add 172.16.<span id="d">D</span>/24 via 10.0.<span id="b">B</span>.1<br>
 	        ip route add 192.168.<span id="c">C</span>/24 via 10.<span id="a">A</span>.0.1<br>
         </p>
+        <hr>
+        <h2>Podomrežja IPv6</h2>
+        <p>Tukej morš pazit, ker če sta A ali C v vpisni 0, potem lahko krajšaš naslov (pride :0:: -> ::)!</p>
+        <p class="koda">
+            2001:db8:e:<span id="a">A</span>::/64<br>
+            2001:db8:<span id="b">B</span>:f::/64<br>
+            2001:db8:ef:<span id="c">C</span>::/64<br>
+            2001:db8:<span id="d">D</span>:ef::/64
+        </p>
+        <h2>Komande za IPv6</h2>
+        <h3>PC1 (2001:db8:ef:<span id="c">C</span>::2/64):</h3>
+        <p class="koda">
+            sudo modprobe ipv6<br>
+	        sudo ip -6 addr add 2001:db8:ef:<span id="c">C</span>::2/64 dev eth0<br>
+	        sudo ip -6 route add ::/0 via 2001:db8:ef:<span id="c">C</span>::1 dev eth0
+        </p>
+        <h3>PC2 (2001:db8:<span id="d">D</span>:ef::2/64):</h3>
+        <p class="koda">
+            sudo modprobe ipv6<br>
+	        sudo ip -6 addr add 2001:db8:<span id="d">D</span>:ef::2/64 dev eth0<br>
+	        sudo ip -6 route add ::/0 via 2001:db8:<span id="d">D</span>:ef::1 dev eth0
+        </p>
+        <h3>R1 (2001:db8:ef:<span id="c">C</span>::1/64, 2001:db8:e:<span id="a">A</span>::2/64):</h3>
+        <p class="koda">
+            ip -6 addr add 2001:db8:ef:<span id="c">C</span>::1/64 dev eth0<br>
+	        ip -6 addr add 2001:db8:e:<span id="a">A</span>::2/64 dev eth1<br>
+	        ip -6 route add 2001:db8:<span id="d">D</span>:ef::/64 via 2001:db8:e:<span id="a">A</span>::1
+        </p>
+        <h3>R2 (2001:db8:<span id="d">D</span>:ef::1/64, 2001:db8:<span id="b">B</span>:f::2/64):</h3>
+        <p class="koda">
+            ip -6 addr add 2001:db8:<span id="d">D</span>:ef::1/64 dev eth0<br>
+	        ip -6 addr add 2001:db8:<span id="b">B</span>:f::2/64 dev eth1<br>
+	        ip -6 route add 2001:db8:ef:<span id="c">C</span>::/64 via 2001:db8:<span id="b">B</span>:f::1
+        </p>
+        <h3>R3 (2001:db8:e:<span id="a">A</span>::1/64, 2001:db8:<span id="b">B</span>:f::1/64):</h3>
+        <p class="koda">
+            ip -6 addr add 2001:db8:e:<span id="a">A</span>::1/64 dev eth0<br>
+	        ip -6 addr add 2001:db8:<span id="b">B</span>:f::1/64 dev eth1<br>
+	        ip -6 route add 2001:db8:<span id="d">D</span>:ef::/64 via 2001:db8:<span id="b">B</span>:f::2<br>
+	        ip -6 route add 2001:db8:ef:<span id="c">C</span>::/64 via 2001:db8:e:<span id="a">A</span>::2
+        </p>
     </body>
     <script src="generator.js"></script>
 </html>
