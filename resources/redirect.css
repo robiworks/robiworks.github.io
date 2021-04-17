@@ -1,0 +1,37 @@
+body {
+    background-color: #191919;
+    color: #ffffff;
+    font-family: 'Roboto Mono', monospace;
+}
+
+div.redirect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    text-align: center;
+}
+
+a {
+    color: #42aee6;
+}
+
+a:hover {
+    color: #65c9fc;
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    a {
+        color: blue;
+    }
+
+    a:hover {
+        color: rgb(127, 127, 255);
+    }
+}
