@@ -3,108 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Change this link to redirect URL -->
+        <meta http-equiv="refresh" content="4; URL=./ldn5/generator.html">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap">
-        <link rel="stylesheet" type="text/css" href="../../main.css">
-        <link rel="stylesheet" type="text/css" href="generator.css">
-        <title>LDN5 Generator | Robi @ GitHub</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap">
+        <link rel="stylesheet" type="text/css" href="/resources/redirect.css">
+        <link rel="icon" href="/resources/favicon.png" type="image/png" sizes="32x32">
+        <title>redirect notice | robiworks</title>
     </head>
     <body>
-        <h1>RK LDN5 Generator</h1>
-        <label for="vpisna">Vpisna: </label>
-        <input id="vpisna" type="number" value="69">
-        <input id="generiraj" type="button" value="Generiraj" onclick="generiraj()">
-        <h3>SLIKA TOPOLOGIJE</h3>
-        <img src="topologija.png">
-        <h2>Podomrežja IPv4</h2>
-        <p class="koda">
-            10.<span id="a">A</span>.0.0/30<br>
-            10.0.<span id="b">B</span>.0/30<br>
-            192.168.<span id="c">C</span>.0/24<br>
-            172.16.<span id="d">D</span>.0/24
-        </p>
-        <h2>Komande za IPv4</h2>
-        <h3>PC1 (192.168.<span id="c">C</span>.100):</h3>
-        <p class="koda">
-            sudo ifconfig eth0 192.168.<span id="c">C</span>.100<br>
-            sudo ifconfig eth0 netmask 255.255.255.0<br>
-            sudo ip route add 0.0.0.0/0 via 192.168.<span id="c">C</span>.1 dev eth0
-        </p>
-        <h3>PC2 (172.16.<span id="d">D</span>.100):</h3>
-        <p class="koda">
-            sudo ifconfig eth0 172.16.<span id="d">D</span>.100<br>
-            sudo ifconfig eth0 netmask 255.255.255.0<br>
-            sudo ip route add 0.0.0.0/0 via 172.16.<span id="d">D</span>.1 dev eth0
-        </p>
-        <h3>R1 (192.168.<span id="c">C</span>.1, 10.<span id="a">A</span>.0.1):</h3>
-        <p class="koda">
-            ifconfig eth0 192.168.<span id="c">C</span>.1<br>
-	        ifconfig eth0 netmask 255.255.255.0<br>
-	        ifconfig eth1 up<br>
-	        ifconfig eth1 10.<span id="a">A</span>.0.1<br>
-	        ifconfig eth1 netmask 255.255.255.252<br>
-	        ip route add 172.16.<span id="d">D</span>/24 via 10.<span id="a">A</span>.0.2<br>
-        </p>
-        <h3>R2 (172.16.<span id="d">D</span>.1, 10.0.<span id="b">B</span>.1):</h3>
-        <p class="koda">
-            ifconfig eth0 172.16.<span id="d">D</span>.1<br>
-	        ifconfig eth0 netmask 255.255.255.0<br>
-	        ifconfig eth1 up<br>
-	        ifconfig eth1 10.0.<span id="b">B</span>.1<br>
-	        ifconfig eth1 netmask 255.255.255.252<br>
-	        ip route add 192.168.<span id="c">C</span>/24 via 10.0.<span id="b">B</span>.2<br>
-        </p>
-        <h3>R3 (10.<span id="a">A</span>.2, 10.0.<span id="b">B</span>.2):</h3>
-        <p class="koda">
-            ifconfig eth0 10.<span id="a">A</span>.0.2<br>
-	        ifconfig eth0 netmask 255.255.255.252<br>
-	        ifconfig eth1 up<br>
-	        ifconfig eth1 10.0.<span id="b">B</span>.2<br>
-	        ifconfig eth1 netmask 255.255.255.252<br>
-	        ip route add 172.16.<span id="d">D</span>/24 via 10.0.<span id="b">B</span>.1<br>
-	        ip route add 192.168.<span id="c">C</span>/24 via 10.<span id="a">A</span>.0.1<br>
-        </p>
-        <hr>
-        <h2>Podomrežja IPv6</h2>
-        <p>Tukej morš pazit, ker če sta A ali C v vpisni 0, potem lahko krajšaš naslov (pride :0:: -> ::)!</p>
-        <p class="koda">
-            2001:db8:e:<span id="a">A</span>::/64<br>
-            2001:db8:<span id="b">B</span>:f::/64<br>
-            2001:db8:ef:<span id="c">C</span>::/64<br>
-            2001:db8:<span id="d">D</span>:ef::/64
-        </p>
-        <h2>Komande za IPv6</h2>
-        <h3>PC1 (2001:db8:ef:<span id="c">C</span>::2/64):</h3>
-        <p class="koda">
-            sudo modprobe ipv6<br>
-	        sudo ip -6 addr add 2001:db8:ef:<span id="c">C</span>::2/64 dev eth0<br>
-	        sudo ip -6 route add ::/0 via 2001:db8:ef:<span id="c">C</span>::1 dev eth0
-        </p>
-        <h3>PC2 (2001:db8:<span id="d">D</span>:ef::2/64):</h3>
-        <p class="koda">
-            sudo modprobe ipv6<br>
-	        sudo ip -6 addr add 2001:db8:<span id="d">D</span>:ef::2/64 dev eth0<br>
-	        sudo ip -6 route add ::/0 via 2001:db8:<span id="d">D</span>:ef::1 dev eth0
-        </p>
-        <h3>R1 (2001:db8:ef:<span id="c">C</span>::1/64, 2001:db8:e:<span id="a">A</span>::2/64):</h3>
-        <p class="koda">
-            ip -6 addr add 2001:db8:ef:<span id="c">C</span>::1/64 dev eth0<br>
-	        ip -6 addr add 2001:db8:e:<span id="a">A</span>::2/64 dev eth1<br>
-	        ip -6 route add 2001:db8:<span id="d">D</span>:ef::/64 via 2001:db8:e:<span id="a">A</span>::1
-        </p>
-        <h3>R2 (2001:db8:<span id="d">D</span>:ef::1/64, 2001:db8:<span id="b">B</span>:f::2/64):</h3>
-        <p class="koda">
-            ip -6 addr add 2001:db8:<span id="d">D</span>:ef::1/64 dev eth0<br>
-	        ip -6 addr add 2001:db8:<span id="b">B</span>:f::2/64 dev eth1<br>
-	        ip -6 route add 2001:db8:ef:<span id="c">C</span>::/64 via 2001:db8:<span id="b">B</span>:f::1
-        </p>
-        <h3>R3 (2001:db8:e:<span id="a">A</span>::1/64, 2001:db8:<span id="b">B</span>:f::1/64):</h3>
-        <p class="koda">
-            ip -6 addr add 2001:db8:e:<span id="a">A</span>::1/64 dev eth0<br>
-	        ip -6 addr add 2001:db8:<span id="b">B</span>:f::1/64 dev eth1<br>
-	        ip -6 route add 2001:db8:<span id="d">D</span>:ef::/64 via 2001:db8:<span id="b">B</span>:f::2<br>
-	        ip -6 route add 2001:db8:ef:<span id="c">C</span>::/64 via 2001:db8:e:<span id="a">A</span>::2
-        </p>
+        <div class="redirect">
+            <p>The page you are searching for has moved to a new location.</p>
+            <p>You will be redirected in 4 seconds. If that doesn't happen, <a href="./ldn5/generator.html">click here</a>.</p>
+        </div>
     </body>
-    <script src="generator.js"></script>
 </html>

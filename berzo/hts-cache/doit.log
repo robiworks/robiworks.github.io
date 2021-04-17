@@ -1,8 +1,0 @@
--qw%e0C2%Ps2u1%s%uN100%I0p7DaK0c8H0%kf2A2000000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://www.osams.si -O1 "D:\Robert\shitpost\berzo" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +www.osams.si/2018/12/* -www.osams.si/2018/* -www.osams.si/2017/* -www.osams.si/2016/* -www.osams.si/2015/* -www.osams.si/2014/* -www.osams.si/2013/* -ams10.splet.arnes.si/* -www.osams.si/nagovor-ravnateljice/* -www.osams.si/nasa-sola/* -www.osams.si/solstvo-na-vrhniki/* -www.osams.si/o-soli/* -www.osams.si/podatki/* -www.osams.si/solski-dokumenti/* -www.osams.si/svetovalna-sluzba/* -www.osams.si/knjiznica/* -116589.winknj.si/index.php?pg=clani -www.osams.si/galerija/* -www.osams.si/razredi-2015-2016/* -www.osams.si/razredi-2016-2017/* -www.osams.si/razredi-2017-2018/* -www.osams.si/category/* -www.osams.si/info/* -www.osams.si/formativno/* -www.osams.si/prehrana/* -www.osams.si/sio-2020/* -www.osams.si/na-ma-poti/* -www.osams.si/page/* -www.osams.si/events/* -www.osams.si/?eo_month=2018-12 -www.osams.si/?eo_month=2019-02 -www.osams.si/wp-login.php -www.osams.si/feed/* -www.osams.si/comments/* -wordpress.org/*
-File generated automatically on Mon, 07 Jan 2019 17:04:05, do NOT edit
-
-To update a mirror, just launch httrack without any parameters
-The existing cache will be used (and modified)
-To have other options, retype all parameters and launch HTTrack
-To continue an interrupted mirror, just launch httrack without any parameters
-

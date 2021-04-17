@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Begin Open Graph meta tags -->
+        <meta property="og:title" content="LDN5 Generator | robiworks">
+        <meta property="og:description" content="Hehe GNS3 go brr">
+        <meta property="og:type" content="website">
+        <!-- End Open Graph meta tags -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap">
+        <link rel="stylesheet" type="text/css" href="/resources/article.css">
+        <link rel="icon" href="/resources/favicon.png" type="image/png" sizes="32x32">
+        <title>LDN5 Generator | robiworks</title>
+    </head>
+    <body>
+        <h1>RK LDN5 Generator</h1>
+        <div style="text-align: center;">
+            <label for="vpisna">Vpisna številka: </label>
+            <input id="vpisna" type="number" value="69">
+            <input id="generiraj" type="button" value="Generiraj" onclick="generiraj()">
+        </div>
+        <h2>Topologija omrežja</h2>
+        <p>Pred uporabo ukazov poskrbi, da se topologija omrežja <strong>ujema s topologijo na sliki</strong>.</p>
+        <img src="topologija.png" style="display: block; margin: 0 auto;">
+        <h2>IPv4 podomrežja</h2>
+        <code class="block">
+            10.<span id="a">A</span>.0.0/30<br>
+            10.0.<span id="b">B</span>.0/30<br>
+            192.168.<span id="c">C</span>.0/24<br>
+            172.16.<span id="d">D</span>.0/24
+        </code>
+        <h3>IPv4 komande</h3>
+        <h4>PC1 (192.168.<span id="c">C</span>.100)</h4>
+        <code class="block">
+            sudo ifconfig eth0 192.168.<span id="c">C</span>.100<br>
+            sudo ifconfig eth0 netmask 255.255.255.0<br>
+            sudo ip route add 0.0.0.0/0 via 192.168.<span id="c">C</span>.1 dev eth0
+        </code>
+        <h4>PC2 (172.16.<span id="d">D</span>.100)</h4>
+        <code class="block">
+            sudo ifconfig eth0 172.16.<span id="d">D</span>.100<br>
+            sudo ifconfig eth0 netmask 255.255.255.0<br>
+            sudo ip route add 0.0.0.0/0 via 172.16.<span id="d">D</span>.1 dev eth0
+        </code>
+        <h4>R1 (192.168.<span id="c">C</span>.1, 10.<span id="a">A</span>.0.1)</h4>
+        <code class="block">
+            ifconfig eth0 192.168.<span id="c">C</span>.1<br>
+	        ifconfig eth0 netmask 255.255.255.0<br>
+	        ifconfig eth1 up<br>
+	        ifconfig eth1 10.<span id="a">A</span>.0.1<br>
+	        ifconfig eth1 netmask 255.255.255.252<br>
+	        ip route add 172.16.<span id="d">D</span>/24 via 10.<span id="a">A</span>.0.2<br>
+        </code>
+        <h4>R2 (172.16.<span id="d">D</span>.1, 10.0.<span id="b">B</span>.1)</h4>
+        <code class="block">
+            ifconfig eth0 172.16.<span id="d">D</span>.1<br>
+	        ifconfig eth0 netmask 255.255.255.0<br>
+	        ifconfig eth1 up<br>
+	        ifconfig eth1 10.0.<span id="b">B</span>.1<br>
+	        ifconfig eth1 netmask 255.255.255.252<br>
+	        ip route add 192.168.<span id="c">C</span>/24 via 10.0.<span id="b">B</span>.2<br>
+        </code>
+        <h4>R3 (10.<span id="a">A</span>.2, 10.0.<span id="b">B</span>.2)</h4>
+        <code class="block">
+            ifconfig eth0 10.<span id="a">A</span>.0.2<br>
+	        ifconfig eth0 netmask 255.255.255.252<br>
+	        ifconfig eth1 up<br>
+	        ifconfig eth1 10.0.<span id="b">B</span>.2<br>
+	        ifconfig eth1 netmask 255.255.255.252<br>
+	        ip route add 172.16.<span id="d">D</span>/24 via 10.0.<span id="b">B</span>.1<br>
+	        ip route add 192.168.<span id="c">C</span>/24 via 10.<span id="a">A</span>.0.1<br>
+        </code>
+        <h2>IPv6 podomrežja</h2>
+        <p>Tukaj moraš paziti, ker če sta A ali C v vpisni št. 0, potem lahko oz. moraš krajšati naslov (iz :0:: v ::)!</p>
+        <code class="block">
+            2001:db8:e:<span id="a">A</span>::/64<br>
+            2001:db8:<span id="b">B</span>:f::/64<br>
+            2001:db8:ef:<span id="c">C</span>::/64<br>
+            2001:db8:<span id="d">D</span>:ef::/64
+        </code>
+        <h3>IPv6 komande</h3>
+        <h4>PC1 (2001:db8:ef:<span id="c">C</span>::2/64)</h4>
+        <code class="block">
+            sudo modprobe ipv6<br>
+	        sudo ip -6 addr add 2001:db8:ef:<span id="c">C</span>::2/64 dev eth0<br>
+	        sudo ip -6 route add ::/0 via 2001:db8:ef:<span id="c">C</span>::1 dev eth0
+        </code>
+        <h4>PC2 (2001:db8:<span id="d">D</span>:ef::2/64)</h4>
+        <code class="block">
+            sudo modprobe ipv6<br>
+	        sudo ip -6 addr add 2001:db8:<span id="d">D</span>:ef::2/64 dev eth0<br>
+	        sudo ip -6 route add ::/0 via 2001:db8:<span id="d">D</span>:ef::1 dev eth0
+        </code>
+        <h4>R1 (2001:db8:ef:<span id="c">C</span>::1/64, 2001:db8:e:<span id="a">A</span>::2/64)</h4>
+        <code class="block">
+            ip -6 addr add 2001:db8:ef:<span id="c">C</span>::1/64 dev eth0<br>
+	        ip -6 addr add 2001:db8:e:<span id="a">A</span>::2/64 dev eth1<br>
+	        ip -6 route add 2001:db8:<span id="d">D</span>:ef::/64 via 2001:db8:e:<span id="a">A</span>::1
+        </code>
+        <h4>R2 (2001:db8:<span id="d">D</span>:ef::1/64, 2001:db8:<span id="b">B</span>:f::2/64)</h4>
+        <code class="block">
+            ip -6 addr add 2001:db8:<span id="d">D</span>:ef::1/64 dev eth0<br>
+	        ip -6 addr add 2001:db8:<span id="b">B</span>:f::2/64 dev eth1<br>
+	        ip -6 route add 2001:db8:ef:<span id="c">C</span>::/64 via 2001:db8:<span id="b">B</span>:f::1
+        </code>
+        <h4>R3 (2001:db8:e:<span id="a">A</span>::1/64, 2001:db8:<span id="b">B</span>:f::1/64)</h4>
+        <code class="block">
+            ip -6 addr add 2001:db8:e:<span id="a">A</span>::1/64 dev eth0<br>
+	        ip -6 addr add 2001:db8:<span id="b">B</span>:f::1/64 dev eth1<br>
+	        ip -6 route add 2001:db8:<span id="d">D</span>:ef::/64 via 2001:db8:<span id="b">B</span>:f::2<br>
+	        ip -6 route add 2001:db8:ef:<span id="c">C</span>::/64 via 2001:db8:e:<span id="a">A</span>::2
+        </code>
+    </body>
+    <script src="generator.js"></script>
+</html>
