@@ -143,3 +143,32 @@ a {
 a:hover {
     color: #18FFFF;
 }
+
+hr {
+    border: 1px solid #797979;
+}
+
+div.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+div.flex-column {
+    margin: 0rem 1rem;
+    width: 100%;
+}
+
+div.flex-column p {
+    margin: 0 0.25rem;
+    padding: 0;
+    text-align: justify;
+}
+
+div.flex-column h2,
+div.flex-column h3,
+div.flex-column h4,
+div.flex-column h5,
+div.flex-column h6 {
+    text-align: center;
+    padding: 0.2em 1rem 0.2em 1rem;
+}
