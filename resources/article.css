@@ -172,3 +172,80 @@ div.flex-column h6 {
     text-align: center;
     padding: 0.2em 1rem 0.2em 1rem;
 }
+
+/* Light mode definitions */
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    h1 {
+        background-color: rgba(183, 28, 28, 0.3);
+        border: 2px solid #B71C1C;
+        color: #B71C1C;
+    }
+    
+    h2 {
+        background-color: rgba(1, 87, 155, 0.3);
+        border: 1px solid #01579B;
+        color: #01579B;
+    }
+    
+    h3 {
+        background-color: rgba(0, 96, 100, 0.3);
+        border: 1px solid #006064;
+        color:#006064;
+    }
+    
+    h4 {
+        background-color: rgba(0, 77, 64, 0.3);
+        border: 1px solid #004D40;
+        color: #004D40;
+    }
+    
+    h5 {
+        background-color: rgba(27, 94, 32, 0.3);
+        border: 1px solid #1B5E20;
+        color: #1B5E20;
+    }
+    
+    h6 {
+        background-color: rgba(51, 105, 30, 0.3);
+        border: 1px solid #33691E;
+        color: #33691E;
+    }
+    
+    code.block {
+        background-color: #cccccc;
+    }
+    
+    code.inline {
+        background-color: #cccccc;
+    }
+    
+    input[type=number], input[type=text] {
+        background-color: #b2b2b2;
+        color: #000000;
+        border: 1px solid #7f7f7f;
+    }
+    
+    input[type=number]:focus, input[type=text]:focus {
+        background-color: #cccccc;
+        color: #311B92;
+        border: 1px solid #311B92;
+    }
+    
+    a {
+        color: #1A237E;
+        text-decoration: underline;
+    }
+    
+    a:hover {
+        color: #00B8D4;
+    }
+    
+    hr {
+        border: 1px solid #797979;
+    }
+}
