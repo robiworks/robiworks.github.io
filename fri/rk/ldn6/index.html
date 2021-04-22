@@ -27,18 +27,22 @@
     </head>
     <body>
         <h1>LDN6 Generator</h1>
-        <div style="text-align: center">
+        <div style="text-align: center;">
             <label for="vpisna">Vpisna številka:</label>
             <input id="vpisna" type="number" value="69">
             <input id="generiraj" type="button" value="Generiraj!" onclick="generate()"><br>
-            <label>PC1, PC2, PC3:</label>
-            <input id="pc1" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC1 (neobvezno)" onchange="setIPsuffixes(this.id)">
-            <input id="pc2" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC2 (neobvezno)" onchange="setIPsuffixes(this.id)">
-            <input id="pc3" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC3 (neobvezno)" onchange="setIPsuffixes(this.id)"><br>
-            <label>AS(R1), AS(R2), AS(R3):</label>
-            <input id="as1" style="width: fit-content" type="number" value="65531" min="65531" max="65533" title="Številka avtonomnega sistema za R1 (neobvezno)" onchange="validateAS()">
-            <input id="as2" style="width: fit-content" type="number" value="65532" min="65531" max="65533" title="Številka avtonomnega sistema za R2 (neobvezno)" onchange="validateAS()">
-            <input id="as3" style="width: fit-content" type="number" value="65533" min="65531" max="65533" title="Številka avtonomnega sistema za R3 (neobvezno)" onchange="validateAS()">
+            <input type="checkbox" onclick="showAdvancedOptions()">
+            <label for="advanced" title="Dodatne možnosti: nastavljanje IP končnic, številk AS">Omogoči dodatne možnosti</label><br>
+            <div id="advancedOptions" style="display: none;">
+                <label>PC1, PC2, PC3:</label>
+                <input id="pc1" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC1 (neobvezno)" onchange="setIPsuffixes(this.id)">
+                <input id="pc2" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC2 (neobvezno)" onchange="setIPsuffixes(this.id)">
+                <input id="pc3" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC3 (neobvezno)" onchange="setIPsuffixes(this.id)"><br>
+                <label>AS(R1), AS(R2), AS(R3):</label>
+                <input id="as1" style="width: fit-content" type="number" value="65531" min="65531" max="65533" title="Številka avtonomnega sistema za R1 (neobvezno)" onchange="validateAS()">
+                <input id="as2" style="width: fit-content" type="number" value="65532" min="65531" max="65533" title="Številka avtonomnega sistema za R2 (neobvezno)" onchange="validateAS()">
+                <input id="as3" style="width: fit-content" type="number" value="65533" min="65531" max="65533" title="Številka avtonomnega sistema za R3 (neobvezno)" onchange="validateAS()">
+            </div>
         </div>
         <h2>Topologija omrežja</h2>
         <p>Pred uporabo ukazov poskrbi, da se topologija omrežja <strong>ujema s topologijo na sliki</strong>.</p>

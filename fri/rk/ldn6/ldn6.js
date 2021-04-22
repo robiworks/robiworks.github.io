@@ -33,6 +33,8 @@ function generate() {
     setIPsuffixes("pc1");
     setIPsuffixes("pc2");
     setIPsuffixes("pc3");
+
+    validateAS();
 }
 
 function setIPsuffixes(id) {
@@ -44,7 +46,7 @@ function setIPsuffixes(id) {
         }
     } else {
         console.log("Napaka: neuspešna validacija IP končnice! (" + inputBox.value + ")");
-        window.alert("Končnica za IP naslov mora biti v rangu [2, 254]!")
+        window.alert("Dodatne možnosti: Končnica za IP naslov mora biti v rangu [2, 254]!")
         inputBox.value = "100";
     }
 }
@@ -56,7 +58,7 @@ function validateAS() {
 
     if (as1.value === as2.value || as1.value === as3.value || as2.value === as3.value) {
         console.log("Napaka: 2 ali 3 številke AS so enake! (" + as1.value + ", " + as2.value + ", " + as3.value + ")");
-        window.alert("Številke avtonomnih sistemov ne smejo biti enake!");
+        window.alert("Dodatne možnosti: Številke avtonomnih sistemov ne smejo biti enake!");
     } else {
         // Nastavi stevilke za avtonomni sistem R1
         let asr1 = document.querySelectorAll("#asr1");
@@ -71,7 +73,16 @@ function validateAS() {
         // Nastavi stevilke za avtonomni sistem R3
         let asr3 = document.querySelectorAll("#asr3");
         for (let i = 0; i < asr3.length; i++) {
-            asr3[i].innerHTML = as2.value;
+            asr3[i].innerHTML = as3.value;
         }
+    }
+}
+
+function showAdvancedOptions() {
+    let div = document.getElementById("advancedOptions");
+    if (div.style.display == "none") {
+        div.style.display = "block";
+    } else {
+        div.style.display = "none";
     }
 }
