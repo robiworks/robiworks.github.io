@@ -29,6 +29,10 @@ function generate() {
     for (let i = 0; i < cElems.length; i++) {
         cElems[i].innerHTML = c;
     }
+
+    setIPsuffixes("pc1");
+    setIPsuffixes("pc2");
+    setIPsuffixes("pc3");
 }
 
 function setIPsuffixes(id) {

@@ -67,7 +67,7 @@
         <h4>R1 (eth0: 192.168.<span id="b">B</span>.1/24, eth1: 1.1.1.1/30, eth2: 1.1.1.9/30)</h4>
         <code class="block">
             configure<br>
-            set interfaces ethernet eth0 address 192.168.<span id="b">B</span>.<span id="pc1rnd">PC1</span>/24<br>
+            set interfaces ethernet eth0 address 192.168.<span id="b">B</span>.1/24<br>
             set interfaces ethernet eth1 address 1.1.1.1/30<br>
             set interfaces ethernet eth2 address 1.1.1.9/30<br>
             set protocols bgp 65531 neighbor 1.1.1.2 remote-as '65532'<br>
@@ -84,7 +84,7 @@
         <h4>R2 (eth0: 172.16.<span id="c">C</span>.1/24, eth1: 1.1.1.2/30, eth2: 1.1.1.5/30)</h4>
         <code class="block">
             configure<br>
-            set interfaces ethernet eth0 address 172.16.<span id="c">C</span>.<span id="pc2rnd">PC2</span>/24<br>
+            set interfaces ethernet eth0 address 172.16.<span id="c">C</span>.1/24<br>
             set interfaces ethernet eth1 address 1.1.1.2/30<br>
             set interfaces ethernet eth2 address 1.1.1.5/30<br>
             set protocols bgp 65532 neighbor 1.1.1.1 remote-as '65531'<br>
@@ -101,7 +101,7 @@
         <h4>R3 (eth0: 10.<span id="a">A</span>.0.1/24, eth1: 1.1.1.10/30, eth2: 1.1.1.6/30)</h4>
         <code class="block">
             configure<br>
-            set interfaces ethernet eth0 address 10.<span id="a">A</span>.0.<span id="pc3rnd">PC3</span>/24<br>
+            set interfaces ethernet eth0 address 10.<span id="a">A</span>.0.1/24<br>
             set interfaces ethernet eth1 address 1.1.1.10/30<br>
             set interfaces ethernet eth2 address 1.1.1.6/30<br>
             set protocols bgp 65533 neighbor 1.1.1.5 remote-as '65532'<br>
