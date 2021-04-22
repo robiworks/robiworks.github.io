@@ -114,14 +114,14 @@ code.inline {
 
 input[type=number], input[type=text] {
     font-family: 'Roboto Mono', monospace;
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 400;
     background-color: #6b6b6b;
     color: #ffffff;
     border: 1px solid #aaaaaa;
     border-radius: 0.25em;
     box-sizing: border-box;
-    margin: 0 0.125em;
+    margin: 0.5em 0.125em;
     padding: 0.2em;
     text-align: center;
     transition: background-color 0.2s linear, border 0.2s linear, font-weight 0.2s linear;
@@ -130,6 +130,32 @@ input[type=number], input[type=text] {
 input[type=number]:focus, input[type=text]:focus {
     font-weight: 600;
     background-color: #797979;
+    border: 1px solid #00B0FF;
+    outline: none;
+}
+
+input[type=button] {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+    background-color: #464646;
+    color: #ffffff;
+    border: 1px solid #7a7a7a;
+    border-radius: 0.15em;
+    box-sizing: border-box;
+    margin: 0.5em;
+    padding: 0.2em 1em;
+    text-align: center;
+    transition: background-color 0.2s linear, border 0.2s linear;
+}
+
+input[type=button]:hover {
+    background-color: #6b6b6b;
+    border: 1px solid #00B0FF;
+    outline: none;
+}
+
+input[type=button]:active {
+    background-color: #333333;
     border: 1px solid #00B0FF;
     outline: none;
 }
