@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Begin Open Graph meta tags -->
+        <meta property="og:title" content="LDN6 Generator | robiworks">
+        <meta property="og:description" content="Hehe BGP go brrr">
+        <meta property="og:type" content="website">
+        <!-- End Open Graph meta tags -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap">
+        <link rel="stylesheet" type="text/css" href="/resources/article.css">
+        <link rel="icon" href="/resources/favicon.png" type="image/png" sizes="32x32">
+        <title>LDN6 Generator | robiworks</title>
+    </head>
+    <body>
+        <h1>LDN6 Generator</h1>
+        <div style="text-align: center;">
+            <label for="vpisna">Vpisna številka: </label>
+            <input id="vpisna" type="number" value="69">
+            <input id="generiraj" type="button" value="Generiraj!" onclick="generate()">
+        </div>
+        <h2>Topologija omrežja</h2>
+        <p>Pred uporabo ukazov poskrbi, da se topologija omrežja <strong>ujema s topologijo na sliki</strong>.</p>
+        <!-- insert img -->
+        <h3>Generirana podomrežja</h3>
+        <code class="block">
+            10.<span id="a">A</span>.0.0/24<br>
+            192.168.<span id="b">B</span>.0/24<br>
+            172.16.<span id="c">C</span>.0/24<br>
+        </code>
+        <h3>Seznam komand</h3>
+        <h4>PC1 (eth0: 192.168.<span id="b">B</span>.<span id="pc1rnd">PC1</span>/24)</h4>
+        <p>Za konfiguracijo PC1 ne rabiš odpirati konzole, ampak right-click na PC1 &rarr; <em>Edit config</em>.</p>
+        <code class="block">
+            set pcname PC-1<br>
+            ip 192.168.<span id="b">B</span>.<span id="pc1rnd">PC1</span> /24 192.168.<span id="b">B</span>.1
+        </code>
+        <h4>PC2 (eth0: 172.16.<span id="c">C</span>.<span id="pc2rnd">PC2</span>/24)</h4>
+        <p>Za konfiguracijo PC2 ne rabiš odpirati konzole, ampak right-click na PC2 &rarr; <em>Edit config</em>.</p>
+        <code class="block">
+            set pcname PC-2<br>
+            ip 172.16.<span id="c">C</span>.<span id="pc2rnd">PC2</span> /24 172.16.<span id="c">C</span>.1
+        </code>
+        <h4>PC3 (eth0: 10.<span id="a">A</span>.0.<span id="pc3rnd">PC3</span>/24)</h4>
+        <p>Za konfiguracijo PC3 ne rabiš odpirati konzole, ampak right-click na PC3 &rarr; <em>Edit config</em>.</p>
+        <code class="block">
+            set pcname PC-3<br>
+            ip 10.<span id="a">A</span>.0.<span id="pc3rnd">PC3</span> /24 10.<span id="a">A</span>.0.1
+        </code>
+        <h4>R1 (eth0: 192.168.<span id="b">B</span>.1/24, eth1: 1.1.1.1/30, eth2: 1.1.1.9/30)</h4>
+        <code class="block">
+            configure<br>
+            set interfaces ethernet eth0 address 192.168.<span id="b">B</span>.100/24<br>
+            set interfaces ethernet eth1 address 1.1.1.1/30<br>
+            set interfaces ethernet eth2 address 1.1.1.9/30<br>
+            set protocols bgp 65531 neighbor 1.1.1.2 remote-as '65532'<br>
+            set protocols bgp 65531 neighbor 1.1.1.10 remote-as '65533'<br>
+            set protocols bgp 65531 neighbor 1.1.1.2 update-source 1.1.1.1<br>
+            set protocols bgp 65531 neighbor 1.1.1.10 update-source 1.1.1.9<br>
+            set protocols bgp 65531 parameters router-id 1.1.1.1<br>
+            set protocols bgp 65531 parameters router-id 1.1.1.9<br>
+            set protocols bgp 65531 network 192.168.<span id="b">B</span>.0/24<br>
+            commit<br>
+            save<br>
+            exit<br>
+        </code>
+        <h4>R2 (eth0: 172.16.<span id="c">C</span>.1/24, eth1: 1.1.1.2/30, eth2: 1.1.1.5/30)</h4>
+        <code class="block">
+            configure<br>
+            set interfaces ethernet eth0 address 172.16.<span id="c">C</span>.100/24<br>
+            set interfaces ethernet eth1 address 1.1.1.2/30<br>
+            set interfaces ethernet eth2 address 1.1.1.5/30<br>
+            set protocols bgp 65532 neighbor 1.1.1.1 remote-as '65531'<br>
+            set protocols bgp 65532 neighbor 1.1.1.6 remote-as '65533'<br>
+            set protocols bgp 65532 neighbor 1.1.1.1 update-source 1.1.1.2<br>
+            set protocols bgp 65532 neighbor 1.1.1.6 update-source 1.1.1.5<br>
+            set protocols bgp 65532 parameters router-id 1.1.1.2<br>
+            set protocols bgp 65532 parameters router-id 1.1.1.5<br>
+            set protocols bgp 65532 network 172.16.<span id="c">C</span>.0/24<br>
+            commit<br>
+            save<br>
+            exit<br>
+        </code>
+        <h4>R3 (eth0: 10.<span id="a">A</span>.0.1/24, eth1: 1.1.1.10/30, eth2: 1.1.1.6/30)</h4>
+        <code class="block">
+            configure<br>
+            set interfaces ethernet eth0 address 10.<span id="a">A</span>.0.100/24<br>
+            set interfaces ethernet eth1 address 1.1.1.10/30<br>
+            set interfaces ethernet eth2 address 1.1.1.6/30<br>
+            set protocols bgp 65533 neighbor 1.1.1.5 remote-as '65532'<br>
+            set protocols bgp 65533 neighbor 1.1.1.9 remote-as '65531'<br>
+            set protocols bgp 65533 neighbor 1.1.1.5 update-source 1.1.1.6<br>
+            set protocols bgp 65533 neighbor 1.1.1.9 update-source 1.1.1.10<br>
+            set protocols bgp 65533 parameters router-id 1.1.1.10<br>
+            set protocols bgp 65533 parameters router-id 1.1.1.6<br>
+            set protocols bgp 65533 network 10.<span id="a">A</span>.0.0/24<br>
+            commit<br>
+            save<br>
+            exit<br>
+        </code>
+    </body>
+    <script src="ldn6.js"></script>
+</html>
