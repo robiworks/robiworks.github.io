@@ -14,14 +14,27 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap">
         <link rel="stylesheet" type="text/css" href="/resources/article.css">
         <link rel="icon" href="/resources/favicon.png" type="image/png" sizes="32x32">
+        <style>
+            span {
+                transition: color 0.2s linear;
+            }
+
+            span:hover {
+                color: gold;
+            }
+        </style>
         <title>LDN6 Generator | robiworks</title>
     </head>
     <body>
         <h1>LDN6 Generator</h1>
         <div style="text-align: center;">
-            <label for="vpisna">Vpisna številka: </label>
+            <label for="vpisna">Vpisna številka:</label>
             <input id="vpisna" type="number" value="69">
-            <input id="generiraj" type="button" value="Generiraj!" onclick="generate()">
+            <input id="generiraj" type="button" value="Generiraj!" onclick="generate()"><br>
+            <label>PC1, PC2, PC3:</label>
+            <input id="pc1" style="width: fit-content" type="number" value="100" min="1" max="254" title="Končnica za IP naslov PC1 (neobvezno)">
+            <input id="pc2" style="width: fit-content" type="number" value="100" min="1" max="254" title="Končnica za IP naslov PC2 (neobvezno)">
+            <input id="pc3" style="width: fit-content" type="number" value="100" min="1" max="254" title="Končnica za IP naslov PC3 (neobvezno)">
         </div>
         <h2>Topologija omrežja</h2>
         <p>Pred uporabo ukazov poskrbi, da se topologija omrežja <strong>ujema s topologijo na sliki</strong>.</p>
