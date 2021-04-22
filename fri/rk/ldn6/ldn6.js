@@ -30,3 +30,17 @@ function generate() {
         cElems[i].innerHTML = c;
     }
 }
+
+function setIPsuffixes(id) {
+    let inputBox = document.getElementById(id);
+    if (2 <= inputBox.value && inputBox.value <= 255) {
+        let elements = document.querySelectorAll("#" + id + "rnd");
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].innerHTML = inputBox.value;
+        }
+    } else {
+        console.log("Napaka: neuspešna validacija IP končnice! (" + inputBox.value + ")");
+        window.alert("Končnica za IP naslov mora biti v rangu [2, 254]!")
+        inputBox.value = "100";
+    }
+}

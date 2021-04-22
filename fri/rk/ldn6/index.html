@@ -27,14 +27,14 @@
     </head>
     <body>
         <h1>LDN6 Generator</h1>
-        <div style="text-align: center;">
+        <div style="text-align: center">
             <label for="vpisna">Vpisna številka:</label>
             <input id="vpisna" type="number" value="69">
             <input id="generiraj" type="button" value="Generiraj!" onclick="generate()"><br>
             <label>PC1, PC2, PC3:</label>
-            <input id="pc1" style="width: fit-content" type="number" value="100" min="1" max="254" title="Končnica za IP naslov PC1 (neobvezno)">
-            <input id="pc2" style="width: fit-content" type="number" value="100" min="1" max="254" title="Končnica za IP naslov PC2 (neobvezno)">
-            <input id="pc3" style="width: fit-content" type="number" value="100" min="1" max="254" title="Končnica za IP naslov PC3 (neobvezno)">
+            <input id="pc1" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC1 (neobvezno)" onchange="setIPsuffixes(this.id)">
+            <input id="pc2" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC2 (neobvezno)" onchange="setIPsuffixes(this.id)">
+            <input id="pc3" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC3 (neobvezno)" onchange="setIPsuffixes(this.id)">
         </div>
         <h2>Topologija omrežja</h2>
         <p>Pred uporabo ukazov poskrbi, da se topologija omrežja <strong>ujema s topologijo na sliki</strong>.</p>
@@ -47,19 +47,19 @@
         </code>
         <h3>Seznam komand</h3>
         <h4>PC1 (eth0: 192.168.<span id="b">B</span>.<span id="pc1rnd">PC1</span>/24)</h4>
-        <p>Za konfiguracijo PC1 ne rabiš odpirati konzole, ampak right-click na PC1 &rarr; <em>Edit config</em>.</p>
+        <p>Za konfiguracijo PC1 ne rabiš odpirati konzole, ampak right-click na PC1 &rarr; Edit config.</p>
         <code class="block">
             set pcname PC-1<br>
             ip 192.168.<span id="b">B</span>.<span id="pc1rnd">PC1</span> /24 192.168.<span id="b">B</span>.1
         </code>
         <h4>PC2 (eth0: 172.16.<span id="c">C</span>.<span id="pc2rnd">PC2</span>/24)</h4>
-        <p>Za konfiguracijo PC2 ne rabiš odpirati konzole, ampak right-click na PC2 &rarr; <em>Edit config</em>.</p>
+        <p>Za konfiguracijo PC2 ne rabiš odpirati konzole, ampak right-click na PC2 &rarr; Edit config.</p>
         <code class="block">
             set pcname PC-2<br>
             ip 172.16.<span id="c">C</span>.<span id="pc2rnd">PC2</span> /24 172.16.<span id="c">C</span>.1
         </code>
         <h4>PC3 (eth0: 10.<span id="a">A</span>.0.<span id="pc3rnd">PC3</span>/24)</h4>
-        <p>Za konfiguracijo PC3 ne rabiš odpirati konzole, ampak right-click na PC3 &rarr; <em>Edit config</em>.</p>
+        <p>Za konfiguracijo PC3 ne rabiš odpirati konzole, ampak right-click na PC3 &rarr; Edit config.</p>
         <code class="block">
             set pcname PC-3<br>
             ip 10.<span id="a">A</span>.0.<span id="pc3rnd">PC3</span> /24 10.<span id="a">A</span>.0.1
@@ -67,7 +67,7 @@
         <h4>R1 (eth0: 192.168.<span id="b">B</span>.1/24, eth1: 1.1.1.1/30, eth2: 1.1.1.9/30)</h4>
         <code class="block">
             configure<br>
-            set interfaces ethernet eth0 address 192.168.<span id="b">B</span>.100/24<br>
+            set interfaces ethernet eth0 address 192.168.<span id="b">B</span>.<span id="pc1rnd">PC1</span>/24<br>
             set interfaces ethernet eth1 address 1.1.1.1/30<br>
             set interfaces ethernet eth2 address 1.1.1.9/30<br>
             set protocols bgp 65531 neighbor 1.1.1.2 remote-as '65532'<br>
@@ -84,7 +84,7 @@
         <h4>R2 (eth0: 172.16.<span id="c">C</span>.1/24, eth1: 1.1.1.2/30, eth2: 1.1.1.5/30)</h4>
         <code class="block">
             configure<br>
-            set interfaces ethernet eth0 address 172.16.<span id="c">C</span>.100/24<br>
+            set interfaces ethernet eth0 address 172.16.<span id="c">C</span>.<span id="pc2rnd">PC2</span>/24<br>
             set interfaces ethernet eth1 address 1.1.1.2/30<br>
             set interfaces ethernet eth2 address 1.1.1.5/30<br>
             set protocols bgp 65532 neighbor 1.1.1.1 remote-as '65531'<br>
@@ -101,7 +101,7 @@
         <h4>R3 (eth0: 10.<span id="a">A</span>.0.1/24, eth1: 1.1.1.10/30, eth2: 1.1.1.6/30)</h4>
         <code class="block">
             configure<br>
-            set interfaces ethernet eth0 address 10.<span id="a">A</span>.0.100/24<br>
+            set interfaces ethernet eth0 address 10.<span id="a">A</span>.0.<span id="pc3rnd">PC3</span>/24<br>
             set interfaces ethernet eth1 address 1.1.1.10/30<br>
             set interfaces ethernet eth2 address 1.1.1.6/30<br>
             set protocols bgp 65533 neighbor 1.1.1.5 remote-as '65532'<br>
