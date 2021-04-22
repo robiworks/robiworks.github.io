@@ -48,3 +48,30 @@ function setIPsuffixes(id) {
         inputBox.value = "100";
     }
 }
+
+function validateAS() {
+    let as1 = document.getElementById("as1");
+    let as2 = document.getElementById("as2");
+    let as3 = document.getElementById("as3");
+
+    if (as1.value === as2.value || as1.value === as3.value || as2.value === as3.value) {
+        console.log("Napaka: 2 ali 3 številke AS so enake! (" + as1.value + ", " + as2.value + ", " + as3.value + ")");
+        window.alert("Številke avtonomnih sistemov ne smejo biti enake!");
+    } else {
+        // Nastavi stevilke za avtonomni sistem R1
+        let asr1 = document.querySelectorAll("#asr1");
+        for (let i = 0; i < asr1.length; i++) {
+            asr1[i].innerHTML = as1.value;
+        }
+        // Nastavi stevilke za avtonomni sistem R2
+        let asr2 = document.querySelectorAll("#asr2");
+        for (let i = 0; i < asr2.length; i++) {
+            asr2[i].innerHTML = as2.value;
+        }
+        // Nastavi stevilke za avtonomni sistem R3
+        let asr3 = document.querySelectorAll("#asr3");
+        for (let i = 0; i < asr3.length; i++) {
+            asr3[i].innerHTML = as2.value;
+        }
+    }
+}

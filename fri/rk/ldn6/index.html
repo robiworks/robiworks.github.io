@@ -34,7 +34,11 @@
             <label>PC1, PC2, PC3:</label>
             <input id="pc1" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC1 (neobvezno)" onchange="setIPsuffixes(this.id)">
             <input id="pc2" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC2 (neobvezno)" onchange="setIPsuffixes(this.id)">
-            <input id="pc3" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC3 (neobvezno)" onchange="setIPsuffixes(this.id)">
+            <input id="pc3" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC3 (neobvezno)" onchange="setIPsuffixes(this.id)"><br>
+            <label>AS(R1), AS(R2), AS(R3):</label>
+            <input id="as1" style="width: fit-content" type="number" value="65531" min="65531" max="65533" title="Številka avtonomnega sistema za R1 (neobvezno)" onchange="validateAS()">
+            <input id="as2" style="width: fit-content" type="number" value="65532" min="65531" max="65533" title="Številka avtonomnega sistema za R2 (neobvezno)" onchange="validateAS()">
+            <input id="as3" style="width: fit-content" type="number" value="65533" min="65531" max="65533" title="Številka avtonomnega sistema za R3 (neobvezno)" onchange="validateAS()">
         </div>
         <h2>Topologija omrežja</h2>
         <p>Pred uporabo ukazov poskrbi, da se topologija omrežja <strong>ujema s topologijo na sliki</strong>.</p>
@@ -70,13 +74,13 @@
             set interfaces ethernet eth0 address 192.168.<span id="b">B</span>.1/24<br>
             set interfaces ethernet eth1 address 1.1.1.1/30<br>
             set interfaces ethernet eth2 address 1.1.1.9/30<br>
-            set protocols bgp 65531 neighbor 1.1.1.2 remote-as '65532'<br>
-            set protocols bgp 65531 neighbor 1.1.1.10 remote-as '65533'<br>
-            set protocols bgp 65531 neighbor 1.1.1.2 update-source 1.1.1.1<br>
-            set protocols bgp 65531 neighbor 1.1.1.10 update-source 1.1.1.9<br>
-            set protocols bgp 65531 parameters router-id 1.1.1.1<br>
-            set protocols bgp 65531 parameters router-id 1.1.1.9<br>
-            set protocols bgp 65531 network 192.168.<span id="b">B</span>.0/24<br>
+            set protocols bgp <span id="asr1">AS(R1)</span> neighbor 1.1.1.2 remote-as '<span id="asr2">AS(R2)</span>'<br>
+            set protocols bgp <span id="asr1">AS(R1)</span> neighbor 1.1.1.10 remote-as '<span id="asr3">AS(R3)</span>'<br>
+            set protocols bgp <span id="asr1">AS(R1)</span> neighbor 1.1.1.2 update-source 1.1.1.1<br>
+            set protocols bgp <span id="asr1">AS(R1)</span> neighbor 1.1.1.10 update-source 1.1.1.9<br>
+            set protocols bgp <span id="asr1">AS(R1)</span> parameters router-id 1.1.1.1<br>
+            set protocols bgp <span id="asr1">AS(R1)</span> parameters router-id 1.1.1.9<br>
+            set protocols bgp <span id="asr1">AS(R1)</span> network 192.168.<span id="b">B</span>.0/24<br>
             commit<br>
             save<br>
             exit<br>
@@ -87,13 +91,13 @@
             set interfaces ethernet eth0 address 172.16.<span id="c">C</span>.1/24<br>
             set interfaces ethernet eth1 address 1.1.1.2/30<br>
             set interfaces ethernet eth2 address 1.1.1.5/30<br>
-            set protocols bgp 65532 neighbor 1.1.1.1 remote-as '65531'<br>
-            set protocols bgp 65532 neighbor 1.1.1.6 remote-as '65533'<br>
-            set protocols bgp 65532 neighbor 1.1.1.1 update-source 1.1.1.2<br>
-            set protocols bgp 65532 neighbor 1.1.1.6 update-source 1.1.1.5<br>
-            set protocols bgp 65532 parameters router-id 1.1.1.2<br>
-            set protocols bgp 65532 parameters router-id 1.1.1.5<br>
-            set protocols bgp 65532 network 172.16.<span id="c">C</span>.0/24<br>
+            set protocols bgp <span id="asr2">AS(R2)</span> neighbor 1.1.1.1 remote-as '<span id="asr1">AS(R1)</span>'<br>
+            set protocols bgp <span id="asr2">AS(R2)</span> neighbor 1.1.1.6 remote-as '<span id="asr3">AS(R3)</span>'<br>
+            set protocols bgp <span id="asr2">AS(R2)</span> neighbor 1.1.1.1 update-source 1.1.1.2<br>
+            set protocols bgp <span id="asr2">AS(R2)</span> neighbor 1.1.1.6 update-source 1.1.1.5<br>
+            set protocols bgp <span id="asr2">AS(R2)</span> parameters router-id 1.1.1.2<br>
+            set protocols bgp <span id="asr2">AS(R2)</span> parameters router-id 1.1.1.5<br>
+            set protocols bgp <span id="asr2">AS(R2)</span> network 172.16.<span id="c">C</span>.0/24<br>
             commit<br>
             save<br>
             exit<br>
@@ -104,13 +108,13 @@
             set interfaces ethernet eth0 address 10.<span id="a">A</span>.0.1/24<br>
             set interfaces ethernet eth1 address 1.1.1.10/30<br>
             set interfaces ethernet eth2 address 1.1.1.6/30<br>
-            set protocols bgp 65533 neighbor 1.1.1.5 remote-as '65532'<br>
-            set protocols bgp 65533 neighbor 1.1.1.9 remote-as '65531'<br>
-            set protocols bgp 65533 neighbor 1.1.1.5 update-source 1.1.1.6<br>
-            set protocols bgp 65533 neighbor 1.1.1.9 update-source 1.1.1.10<br>
-            set protocols bgp 65533 parameters router-id 1.1.1.10<br>
-            set protocols bgp 65533 parameters router-id 1.1.1.6<br>
-            set protocols bgp 65533 network 10.<span id="a">A</span>.0.0/24<br>
+            set protocols bgp <span id="asr3">AS(R3)</span> neighbor 1.1.1.5 remote-as '<span id="asr2">AS(R2)</span>'<br>
+            set protocols bgp <span id="asr3">AS(R3)</span> neighbor 1.1.1.9 remote-as '<span id="asr1">AS(R1)</span>'<br>
+            set protocols bgp <span id="asr3">AS(R3)</span> neighbor 1.1.1.5 update-source 1.1.1.6<br>
+            set protocols bgp <span id="asr3">AS(R3)</span> neighbor 1.1.1.9 update-source 1.1.1.10<br>
+            set protocols bgp <span id="asr3">AS(R3)</span> parameters router-id 1.1.1.10<br>
+            set protocols bgp <span id="asr3">AS(R3)</span> parameters router-id 1.1.1.6<br>
+            set protocols bgp <span id="asr3">AS(R3)</span> network 10.<span id="a">A</span>.0.0/24<br>
             commit<br>
             save<br>
             exit<br>
