@@ -31,8 +31,8 @@
             <label for="vpisna">Vpisna številka:</label>
             <input id="vpisna" type="number" value="69">
             <input id="generiraj" type="button" value="Generiraj!" onclick="generate()"><br>
-            <input type="checkbox" onclick="showAdvancedOptions()">
-            <label for="advanced" title="Dodatne možnosti: nastavljanje IP končnic, številk AS">Omogoči dodatne možnosti</label><br>
+            <input id="advanced" type="checkbox" onclick="showAdvancedOptions()">
+            <label for="advanced" title="Dodatne možnosti: nastavljanje IP končnic, številk AS">Omogoči dodatne možnosti <i>(advanced users)</i></label><br>
             <div id="advancedOptions" style="display: none;">
                 <label>PC1, PC2, PC3:</label>
                 <input id="pc1" style="width: fit-content" type="number" value="100" min="2" max="254" title="Končnica za IP naslov PC1 (neobvezno)" onchange="setIPsuffixes(this.id)">
@@ -48,6 +48,7 @@
         <p>Pred uporabo ukazov poskrbi, da se topologija omrežja <strong>ujema s topologijo na sliki</strong>. Modri simboli predstavljajo VyOS usmerjevalnik.</p>
         <img src="topologija.png" style="display: block; margin: auto; max-width: 100%; height: auto;">
         <h3>Generirana podomrežja</h3>
+        <p>Tu so navedena podomrežja, generirana iz tvoje vpisne številke. Tega ne rabiš nikjer, je le informativno!</p>
         <code class="block">
             10.<span id="a">A</span>.0.0/24<br>
             192.168.<span id="b">B</span>.0/24<br>
@@ -73,6 +74,7 @@
             ip 10.<span id="a">A</span>.0.<span id="pc3rnd">PC3</span> /24 10.<span id="a">A</span>.0.1
         </code>
         <h4>R1 (eth0: 192.168.<span id="b">B</span>.1/24, eth1: 1.1.1.1/30, eth2: 1.1.1.9/30)</h4>
+        <p>Odpri terminal (konzolo) usmerjevalnika R1 in po vrsti vnesi spodnje ukaze.</p>
         <code class="block">
             configure<br>
             set interfaces ethernet eth0 address 192.168.<span id="b">B</span>.1/24<br>
@@ -90,6 +92,7 @@
             exit<br>
         </code>
         <h4>R2 (eth0: 172.16.<span id="c">C</span>.1/24, eth1: 1.1.1.2/30, eth2: 1.1.1.5/30)</h4>
+        <p>Odpri terminal (konzolo) usmerjevalnika R2 in po vrsti vnesi spodnje ukaze.</p>
         <code class="block">
             configure<br>
             set interfaces ethernet eth0 address 172.16.<span id="c">C</span>.1/24<br>
@@ -107,6 +110,7 @@
             exit<br>
         </code>
         <h4>R3 (eth0: 10.<span id="a">A</span>.0.1/24, eth1: 1.1.1.10/30, eth2: 1.1.1.6/30)</h4>
+        <p>Odpri terminal (konzolo) usmerjevalnika R3 in po vrsti vnesi spodnje ukaze.</p>
         <code class="block">
             configure<br>
             set interfaces ethernet eth0 address 10.<span id="a">A</span>.0.1/24<br>
@@ -123,6 +127,14 @@
             save<br>
             exit<br>
         </code>
+        <h3>Disclaimer</h3>
+        <p>
+            To ni vse, kar moraš narediti za LDN6. Narediti moraš še Wireshark capture za <strong>ping in traceroute</strong> pred in po prekinitvi povezave R1-R2,
+            v tekstovno datoteko kopirati <strong>usmerjevalne tabele vseh 3 usmerjevalnikov</strong> (namig: uporabi ukaz <code class="inline">show ip route</code>)
+            in <strong>dopolniti svojo topologijo</strong> v GNS3 z oznakami omrežij, IP naslovi vmesnikov ipd. Podrobnejša navodila najdeš na spletni učilnici.
+            Kar je navedeno v tem odstavku ni vse, kar moraš narediti, zato <strong>nujno preveri NAVODILA V SPLETNI UČILNICI!</strong>
+            Pri generiranju ukazov lahko pride do napak (to je sicer malo verjetno). <span class="spoiler">pls ne mi pisat zakaj ne dela</span>
+        </p>
     </body>
     <script src="ldn6.js"></script>
 </html>
