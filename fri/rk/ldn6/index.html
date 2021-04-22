@@ -45,8 +45,8 @@
             </div>
         </div>
         <h2>Topologija omrežja</h2>
-        <p>Pred uporabo ukazov poskrbi, da se topologija omrežja <strong>ujema s topologijo na sliki</strong>.</p>
-        <!-- insert img -->
+        <p>Pred uporabo ukazov poskrbi, da se topologija omrežja <strong>ujema s topologijo na sliki</strong>. Modri simboli predstavljajo VyOS usmerjevalnik.</p>
+        <img src="topologija.png" style="display: block; margin: auto; max-width: 100%; height: auto;">
         <h3>Generirana podomrežja</h3>
         <code class="block">
             10.<span id="a">A</span>.0.0/24<br>
@@ -57,19 +57,19 @@
         <h4>PC1 (eth0: 192.168.<span id="b">B</span>.<span id="pc1rnd">PC1</span>/24)</h4>
         <p>Za konfiguracijo PC1 ne rabiš odpirati konzole, ampak right-click na PC1 &rarr; Edit config.</p>
         <code class="block">
-            set pcname PC-1<br>
+            set pcname PC1<br>
             ip 192.168.<span id="b">B</span>.<span id="pc1rnd">PC1</span> /24 192.168.<span id="b">B</span>.1
         </code>
         <h4>PC2 (eth0: 172.16.<span id="c">C</span>.<span id="pc2rnd">PC2</span>/24)</h4>
         <p>Za konfiguracijo PC2 ne rabiš odpirati konzole, ampak right-click na PC2 &rarr; Edit config.</p>
         <code class="block">
-            set pcname PC-2<br>
+            set pcname PC2<br>
             ip 172.16.<span id="c">C</span>.<span id="pc2rnd">PC2</span> /24 172.16.<span id="c">C</span>.1
         </code>
         <h4>PC3 (eth0: 10.<span id="a">A</span>.0.<span id="pc3rnd">PC3</span>/24)</h4>
         <p>Za konfiguracijo PC3 ne rabiš odpirati konzole, ampak right-click na PC3 &rarr; Edit config.</p>
         <code class="block">
-            set pcname PC-3<br>
+            set pcname PC3<br>
             ip 10.<span id="a">A</span>.0.<span id="pc3rnd">PC3</span> /24 10.<span id="a">A</span>.0.1
         </code>
         <h4>R1 (eth0: 192.168.<span id="b">B</span>.1/24, eth1: 1.1.1.1/30, eth2: 1.1.1.9/30)</h4>
